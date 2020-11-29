@@ -1,0 +1,20 @@
+.root {
+    -fx-background-color: #31081F;
+    -fx-font-family: "Futura";
+    -fx-text-fill: #DCE0D9;
+    -fx-border-color: #808F85;
+
+}
+
+.label {
+    -fx-text-fill: #DCE0D9;
+}
+
+#mainLabel {
+    -fx-font-size: 24px;
+}
+
+.list-view {
+    -fx-text-fill: #595959;
+}
+

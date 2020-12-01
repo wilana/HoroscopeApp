@@ -10,15 +10,16 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 
 public class HoroscopeApiUtility {
-    private static String rapidApiKeyName = "rapidapi-key";
+    private static String rapidApiKeyName = "x-rapidapi-key";
     private static String rapidApiKeyValue = "c0a77e70f0mshd6add42bee1793bp15d37ejsn0b7319d01ef5";
 
     public static void getHoroscopeFromSearch(String day, String sign) throws IOException, InterruptedException {
         String searchURL = "https://sameer-kumar-aztro-v1.p.rapidapi.com/?day=" + day + "&sign=" + sign ;
         HttpClient client = HttpClient.newHttpClient();
+        // used sample code from https://rapidapi.com/sameer.kumar/api/aztro to help
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(searchURL))
-                .header("x-rapidapi-key", rapidApiKeyValue)
+                .header(rapidApiKeyName, rapidApiKeyValue)
                 .header("x-rapidapi-host", "sameer-kumar-aztro-v1.p.rapidapi.com")
                 .method("POST", HttpRequest.BodyPublishers.noBody())
                 .build();
@@ -31,12 +32,28 @@ public class HoroscopeApiUtility {
 
         String searchURL = "https://zodiac-sign.p.rapidapi.com/sign?date=" + date ;
         HttpClient client = HttpClient.newHttpClient();
+        // used sample code from https://rapidapi.com/hajderr/api/zodiac-sign?endpoint=apiendpoint_91d0edd4-a719-41e7-855f-d71246ac993c
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(searchURL))
                 .header(rapidApiKeyName, rapidApiKeyValue)
+                .header("x-rapidapi-host", "zodiac-sign.p.rapidapi.com")
+                .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
 
         HttpResponse<Path> response = client.send(request, HttpResponse.BodyHandlers.ofFile(Paths.get("./src/JSONFiles/signSearch.json")));
+    }
+
+    public static void getAllSigns() throws IOException, InterruptedException {
+        String searchURL = "https://zodiac-sign.p.rapidapi.com/signs";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(searchURL))
+                .header(rapidApiKeyName, rapidApiKeyValue)
+                .header("x-rapidapi-host", "zodiac-sign.p.rapidapi.com")
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<Path> response = client.send(request, HttpResponse.BodyHandlers.ofFile(Paths.get("./src/JSONFiles/allSigns.json")));
     }
 }
 

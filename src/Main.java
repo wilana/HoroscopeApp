@@ -1,3 +1,4 @@
+import Models.Horoscope;
 import Utilities.HoroscopeApiUtility;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,19 +17,14 @@ public class Main extends Application {
 
         try {
             HoroscopeApiUtility.getSignFromSearch("1995","05","11");
+            HoroscopeApiUtility.getHoroscopeFromSearch("today", "aquarius");
+            HoroscopeApiUtility.getAllSigns();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        try {
-            HoroscopeApiUtility.getHoroscopeFromSearch("today", "aquarius");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         launch(args);
     }
 

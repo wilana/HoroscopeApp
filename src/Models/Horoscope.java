@@ -1,28 +1,52 @@
 package Models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Horoscope {
-    private Date currentDate;
-    private String dateRange, description, compatibility, mood, color, luckyTime;
-    private int luckyNum;
+    @SerializedName("date_range")
+    private String dateRange;
 
-    public Horoscope(Date currentDate, String dateRange, String description, String compatibility, String mood, String color, String luckyTime, int luckyNum) {
+    @SerializedName("current_date")
+    private String currentDate;
+
+    @SerializedName("description")
+    private String description;
+
+    @SerializedName("compatibility")
+    private String compatibility;
+
+    @SerializedName("mood")
+    private String mood;
+
+    @SerializedName("color")
+    private String colour;
+
+    @SerializedName("lucky_number")
+    private String luckyNum;
+
+    @SerializedName("lucky_time")
+    private String luckyTime;
+
+    public Horoscope(String dateRange, String currentDate, String description, String compatibility,
+                     String mood, String colour, String luckyNum, String luckyTime)
+    {
         setCurrentDate(currentDate);
         setDateRange(dateRange);
         setDescription(description);
         setCompatibility(compatibility);
         setMood(mood);
-        setColor(color);
+        setColour(colour);
         setLuckyTime(luckyTime);
         setLuckyNum(luckyNum);
     }
 
-    public Date getCurrentDate() {
+    public String getCurrentDate() {
         return currentDate;
     }
 
-    public void setCurrentDate(Date currentDate) {
+    public void setCurrentDate(String currentDate) {
         this.currentDate = currentDate;
     }
 
@@ -58,12 +82,12 @@ public class Horoscope {
         this.mood = mood;
     }
 
-    public String getColor() {
-        return color;
+    public String getColour() {
+        return colour;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 
     public String getLuckyTime() {
@@ -74,11 +98,11 @@ public class Horoscope {
         this.luckyTime = luckyTime;
     }
 
-    public int getLuckyNum() {
+    public String getLuckyNum() {
         return luckyNum;
     }
 
-    public void setLuckyNum(int luckyNum) {
+    public void setLuckyNum(String luckyNum) {
         this.luckyNum = luckyNum;
     }
 }

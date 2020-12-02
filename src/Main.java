@@ -17,7 +17,7 @@ public class Main extends Application {
 
         try {
             HoroscopeApiUtility.getSignFromSearch("1995","05","11");
-            HoroscopeApiUtility.getHoroscopeFromSearch("today", "aquarius");
+            HoroscopeApiUtility.getHoroscopeFromSearch("today", "taurus");
             HoroscopeApiUtility.getAllSigns();
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,5 +1,7 @@
 package Controllers;
 
+import Models.Horoscope;
+import Utilities.JSONFileUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
@@ -9,6 +11,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewHoroscopeController implements Initializable {
+
+        private Horoscope horoscope;
 
         @FXML
         private Label currentDayLabel;
@@ -68,6 +72,11 @@ public class ViewHoroscopeController implements Initializable {
 
     @FXML
     void goBackButtonPushed(ActionEvent event) {
+
+    }
+
+    public void initData(String sign) {
+            horoscope = JSONFileUtility.getHoroscope("./src/JSONFiles/horoscopeSearch.json");
 
     }
 }

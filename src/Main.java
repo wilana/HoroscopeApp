@@ -14,17 +14,6 @@ import java.util.GregorianCalendar;
 public class Main extends Application {
 
     public static void main(String[] args) {
-
-        try {
-            HoroscopeApiUtility.getSignFromSearch("1995","05","11");
-            HoroscopeApiUtility.getHoroscopeFromSearch("today", "taurus");
-            HoroscopeApiUtility.getAllSigns();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         launch(args);
     }
 
@@ -36,7 +25,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add("styles.css");
         // Add title and show
-        stage.setTitle("Horoscope");
+        stage.setTitle("Horoscope Finder");
         //Image ico = new Image("/Images/seedling.png");
         //stage.getIcons().add(ico);
         stage.setScene(scene);

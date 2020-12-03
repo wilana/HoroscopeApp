@@ -23,7 +23,7 @@ public class JSONFileUtility {
      */
     public static ArrayList<Sign> getSignList(String jsonFileName)
     {
-        ArrayList<Sign> signs = new ArrayList<>();
+        ArrayList<Sign> signList = new ArrayList<>();
         Gson gson = new Gson();
 
         try (
@@ -32,14 +32,15 @@ public class JSONFileUtility {
                 )
         {
             // get all signs
-            AllSigns allSigns = gson.fromJson(jsonReader, AllSigns.class);
+            Sign[] signs = gson.fromJson(jsonReader, Sign[].class);
+            AllSigns allSigns = new AllSigns(signs);
             // save all signs to arrayList
-            signs.addAll(Arrays.asList(allSigns.getSigns()));
+            signList.addAll(Arrays.asList(allSigns.getSigns()));
         } catch (Exception e)
         {
             e.printStackTrace();
         }
-        return signs;
+        return signList;
     }
 
     /**

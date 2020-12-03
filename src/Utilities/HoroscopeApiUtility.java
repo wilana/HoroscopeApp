@@ -8,7 +8,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Calendar;
 
 public class HoroscopeApiUtility {
     private static String rapidApiKeyName = "x-rapidapi-key";
@@ -42,12 +41,23 @@ public class HoroscopeApiUtility {
      * @param month birth month
      * @param day birth date
      */
-    public static void getSignFromSearch(String year, String month, String day) throws IOException, InterruptedException {
+    public static void getSignFromSearch(int year, int month, int day) throws IOException, InterruptedException {
         clearFileContents("./src/JSONFiles/signSearch.json");
 
-        String date = year + "-" + month + "-" + day;
+        String birthday = String.format("%d-", year);
+        // month must have two digits
+        if (month < 10)
+            birthday = birthday.concat(String.format("0%d-", month));
+        else
+            birthday = birthday.concat(String.format("%d-", month));
+        // day must have two digits
+        if (day < 10)
+            birthday = birthday.concat(String.format("0%d", day));
+        else
+            birthday = birthday.concat(String.format("%d", day));
 
-        String searchURL = "https://zodiac-sign.p.rapidapi.com/sign?date=" + date ;
+
+        String searchURL = "https://zodiac-sign.p.rapidapi.com/sign?date=" + birthday ;
         HttpClient client = HttpClient.newHttpClient();
         // used sample code from https://rapidapi.com/hajderr/api/zodiac-sign?endpoint=apiendpoint_91d0edd4-a719-41e7-855f-d71246ac993c
         HttpRequest request = HttpRequest.newBuilder()

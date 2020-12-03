@@ -50,7 +50,16 @@ public class  Sign {
         this.endDate = formatDate(date);
     }
 
-    //
+    @Override
+    public String toString() {
+        return name + "(" + startDate + " - " + endDate + ")";
+    }
+
+    /**
+     * Format date as 3 letter month followed by day
+     * @param date Split string array of date
+     * @return formatted date
+     */
     private String formatDate(String[] date) {
         String month = "";
 

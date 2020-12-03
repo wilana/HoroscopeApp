@@ -75,7 +75,7 @@ public class JSONFileUtility {
         )
         {
             // get horoscope
-            Horoscope horoscope = gson.fromJson(jsonReader, AllSigns.class);
+            Horoscope horoscope = gson.fromJson(jsonReader, Horoscope.class);
             // save horoscope to arrayList
             horoscopes.addAll(Arrays.asList(horoscope));
         } catch (Exception e)

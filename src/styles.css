@@ -14,19 +14,7 @@
     -fx-font-size: 24px;
 }
 
-.list-view {
-    -fx-text-fill: #595959;
-}
-
-.date-picker-popup {
-    -fx-text-fill: #31081F;
-}
-
 .date-picker-popup > .month-year-pane
 {
-    -fx-text-fill: #31081F;
-}
-
-#datePicker {
-    -fx-text-fill: #31081F;
+    -fx-background-color: #31081F;
 }

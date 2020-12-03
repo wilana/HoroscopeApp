@@ -2,11 +2,14 @@ package Controllers;
 
 import Models.Horoscope;
 import Utilities.JSONFileUtility;
+import Utilities.SceneChangeUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,46 +21,20 @@ public class ViewHoroscopeController implements Initializable {
         private Label currentDayLabel;
 
         @FXML
-        private Label currentDayLabel1;
-
-        @FXML
-        private Label signLabel;
-
-        @FXML
-        private Label dateRangeLabel;
-
-        @FXML
-        private Label currentDayLabel11;
-
-        @FXML
         private Label descriptionLabel;
-
-        @FXML
-        private Label currentDayLabel12;
 
         @FXML
         private Label compatibilityLabel;
 
         @FXML
-        private Label currentDayLabel122;
-
-        @FXML
         private Label moodLabel;
 
-        @FXML
-        private Label currentDayLabel121;
 
         @FXML
         private Label colourLabel;
 
         @FXML
-        private Label currentDayLabel1221;
-
-        @FXML
         private Label luckyNumLabel;
-
-        @FXML
-        private Label currentDayLabel1211;
 
         @FXML
         private Label luckyTimeLabel;
@@ -67,16 +44,27 @@ public class ViewHoroscopeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Horoscope horoscope = JSONFileUtility.getHoroscope("./src/JSONFiles/horoscopeSearch.json");
 
+        descriptionLabel.setWrapText(true);
+
+        // update labels
+        currentDayLabel.setText("For " + horoscope.getCurrentDate());
+        descriptionLabel.setText(horoscope.getDescription());
+        compatibilityLabel.setText(horoscope.getCompatibility());
+        moodLabel.setText(horoscope.getMood());
+        colourLabel.setText(horoscope.getColour());
+        luckyNumLabel.setText(horoscope.getLuckyNum());
+        luckyTimeLabel.setText(horoscope.getLuckyTime());
+
+        // Back button changes scene to select horoscope
+        goBackButton.setOnAction(event -> {
+                try {
+                        SceneChangeUtility.changeScene(event, "./src/Views/SelectHoroscopeView.fxml", "Pick Horoscope");
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
+        });
     }
 
-    @FXML
-    void goBackButtonPushed(ActionEvent event) {
-
-    }
-
-    public void initData(String sign) {
-            horoscope = JSONFileUtility.getHoroscope("./src/JSONFiles/horoscopeSearch.json");
-
-    }
 }

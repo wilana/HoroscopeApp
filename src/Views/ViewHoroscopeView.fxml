@@ -8,101 +8,120 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="500.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewHoroscopeController">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewHoroscopeController">
    <children>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="550.0" spacing="20.0">
+      <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="650.0" spacing="20.0">
          <children>
             <Label id="mainLabel" text="Horoscope" underline="true">
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </Label>
             <Label fx:id="currentDayLabel" text="For date" />
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0">
                <children>
-                  <Label fx:id="currentDayLabel1" prefWidth="100.0" text="Sign:" textAlignment="RIGHT" />
-                  <Label fx:id="signLabel" text="sign">
-                     <HBox.margin>
-                        <Insets left="10.0" right="20.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="dateRangeLabel" text="( to )" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0">
-               <children>
-                  <Label fx:id="currentDayLabel11" prefWidth="100.0" text="Description:" textAlignment="RIGHT" />
-                  <Label fx:id="descriptionLabel" text="advice" wrapText="true">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" minHeight="100.0" prefWidth="200.0" text="Description:" textAlignment="RIGHT" />
+                  <Label fx:id="descriptionLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" minHeight="100.0" prefHeight="100.0" prefWidth="200.0" text="advice" wrapText="true">
                      <HBox.margin>
                         <Insets left="10.0" right="20.0" />
                      </HBox.margin>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0">
                <children>
-                  <Label fx:id="currentDayLabel12" prefWidth="100.0" text="Compatibility:" />
-                  <Label fx:id="compatibilityLabel" text="sign">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Compatibility:" textAlignment="RIGHT" />
+                  <Label fx:id="compatibilityLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="sign">
                      <HBox.margin>
                         <Insets left="10.0" right="20.0" />
                      </HBox.margin>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0">
                <children>
-                  <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="498.0">
-                     <children>
-                        <Label fx:id="currentDayLabel122" prefWidth="100.0" text="Mood:" textAlignment="RIGHT" />
-                        <Label fx:id="moodLabel" text="mood">
-                           <HBox.margin>
-                              <Insets left="10.0" right="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="498.0">
-                     <children>
-                        <Label fx:id="currentDayLabel121" prefWidth="100.0" text="Colour:" />
-                        <Label fx:id="colourLabel" text="sign">
-                           <HBox.margin>
-                              <Insets left="10.0" right="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Mood:" textAlignment="RIGHT" />
+                  <Label fx:id="moodLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="mood">
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="498.0">
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0">
                <children>
-                  <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="498.0">
-                     <children>
-                        <Label fx:id="currentDayLabel1221" prefWidth="100.0" text="Lucky Number:" />
-                        <Label fx:id="luckyNumLabel" text="number">
-                           <HBox.margin>
-                              <Insets left="10.0" right="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="498.0">
-                     <children>
-                        <Label fx:id="currentDayLabel1211" prefWidth="100.0" text="Lucky Time:" />
-                        <Label fx:id="luckyTimeLabel" text="Time">
-                           <HBox.margin>
-                              <Insets left="10.0" right="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Colour:" textAlignment="RIGHT" />
+                  <Label fx:id="colourLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="sign">
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Lucky Number:" textAlignment="RIGHT" />
+                  <Label fx:id="luckyNumLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="number">
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Lucky Time:" textAlignment="RIGHT" />
+                  <Label fx:id="luckyTimeLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="Time">
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </HBox>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Button fx:id="goBackButton" alignment="BOTTOM_CENTER" layoutX="235.0" layoutY="536.0" mnemonicParsing="false" onAction="#goBackButtonPushed" text="Go Back" />
+      <Button fx:id="goBackButton" alignment="BOTTOM_CENTER" layoutX="236.0" layoutY="636.0" mnemonicParsing="false" text="Go Back" />
    </children>
 </AnchorPane>

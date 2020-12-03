@@ -1,22 +1,17 @@
 package Controllers;
 
-import Models.AllSigns;
-import Models.Horoscope;
 import Models.Sign;
 import Utilities.HoroscopeApiUtility;
 import Utilities.JSONFileUtility;
 import Utilities.SceneChangeUtility;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderStroke;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,10 +23,11 @@ import java.util.ResourceBundle;
 
 public class SelectHoroscopeController implements Initializable {
 
+    // Current dates
     private LocalDate today = LocalDate.now();
     private LocalDate yesterday = today.minusDays(1);
     private LocalDate tomorrow = today.plusDays(1);
-
+    // store all signs
     private ArrayList<Sign> signs = new ArrayList<>();
 
     @FXML
@@ -46,10 +42,12 @@ public class SelectHoroscopeController implements Initializable {
     @FXML
     private Button getHoroscopeButton;
 
+    /**
+     * Start scene with current dates and list of all signs
+     * and listener for birthday datepicker and get horoscope button
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Find dates
-
 
         // formatting from https://howtodoinjava.com/java/date-time/localdate-format-example/
         String todayDate = today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
@@ -68,6 +66,7 @@ public class SelectHoroscopeController implements Initializable {
             HoroscopeApiUtility.getAllSigns();
             // use json utility to file out list view
             signs = JSONFileUtility.getSignList("./src/JSONFiles/allSigns.json");
+            // update list view to see all signs
             signListView.getItems().addAll(signs);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -75,7 +74,8 @@ public class SelectHoroscopeController implements Initializable {
 
         // Start datepicker at 20 years ago
         birthdayDatePicker.setValue(today.minusYears(20));
-        // date picker updates list view
+
+        // date picker updates list view when a date is chosen
         birthdayDatePicker.setOnAction(actionEvent -> {
             LocalDate birthday = birthdayDatePicker.getValue();
             try {
@@ -84,45 +84,54 @@ public class SelectHoroscopeController implements Initializable {
                 // update list view
                 signListView.getItems().clear();
                 signListView.getItems().add(getSignInfo(sign));
+
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         });
 
-
+        // Get Horoscope Button clicked
         getHoroscopeButton.setOnAction(event ->
         {
             try {
-                getHoroscope(event, signListView.getSelectionModel().getSelectedItem().getName());
+                String sign = signListView.getSelectionModel().getSelectedItem().getName();
+                if (!sign.equalsIgnoreCase("Invalid Date")) {
+                    String date = "";
+                    String selected = dayComboBox.getValue();
+                    if (selected.equalsIgnoreCase(today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)))) {
+                        date = "today";
+                    } else if (selected.equalsIgnoreCase(yesterday.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)))) {
+                        date = "yesterday";
+                    } else if (selected.equalsIgnoreCase(tomorrow.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)))) {
+                        date = "tomorrow";
+                    }
+
+                    // Get horoscope from API so the controller can find it
+                    HoroscopeApiUtility.getHoroscopeFromSearch(date, sign);
+                    // Change scene to view
+                    SceneChangeUtility.changeScene(event, "/Views/ViewHoroscopeView.fxml", sign + " Horoscope");
+                }
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
+            } catch (NullPointerException nullPointerException) {
+                signListView.getItems().clear();
+                signListView.getItems().addAll(signs);
+
             }
         });
 
-
     }
 
-    private void getHoroscope(ActionEvent event, String sign) throws IOException, InterruptedException {
-        String date = "";
-        String selected = dayComboBox.getValue();
-        if (selected.equalsIgnoreCase(today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)))) {
-            date = "today";
-        } else if (selected.equalsIgnoreCase(yesterday.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)))) {
-            date = "yesterday";
-        } else if (selected.equalsIgnoreCase(tomorrow.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)))) {
-            date = "tomorrow";
-        }
-
-        // Get horoscope from API so the controller can find it
-        HoroscopeApiUtility.getHoroscopeFromSearch(date, sign);
-        // Change scene to view
-        SceneChangeUtility.changeScene(event, "/Views/ViewHoroscopeView.fxml", sign + " Horoscope");
-    }
-
-
-    public Sign getSignInfo(String signName) {
+    /**
+     * Finds matching sign to add dates to sign name from JSON
+     * Used after getting sign from datepicker
+     *
+     * @param signName sign to find
+     * @return Sign object with name and dates
+     */
+    private Sign getSignInfo(String signName) {
+        // Set default sign
         Sign matchingSign = new Sign(signName, "00/00", "00/00");
-
 
         for (Sign sign : signs) {
             if (sign.getName().equalsIgnoreCase(signName)) {

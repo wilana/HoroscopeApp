@@ -58,9 +58,10 @@ public class ViewHoroscopeController implements Initializable {
         luckyTimeLabel.setText(horoscope.getLuckyTime());
 
         // Back button changes scene to select horoscope
-        goBackButton.setOnAction(event -> {
+            goBackButton.setOnAction(event ->
+            {
                 try {
-                        SceneChangeUtility.changeScene(event, "./src/Views/SelectHoroscopeView.fxml", "Pick Horoscope");
+                        SceneChangeUtility.changeScene(event, "/Views/SelectHoroscopeView.fxml", "Pick Horoscope");
                 } catch (IOException e) {
                         e.printStackTrace();
                 }

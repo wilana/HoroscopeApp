@@ -26,8 +26,9 @@ public class Main extends Application {
         scene.getStylesheets().add("styles.css");
         // Add title and show
         stage.setTitle("Horoscope Finder");
-        //Image ico = new Image("/Images/seedling.png");
-        //stage.getIcons().add(ico);
+        // PNG from https://www.pngrepo.com/svg/217291/astrology-horoscope
+        Image ico = new Image("/Images/astrologyIcon.png");
+        stage.getIcons().add(ico);
         stage.setScene(scene);
         stage.show();
     }

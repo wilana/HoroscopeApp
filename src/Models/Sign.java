@@ -2,7 +2,7 @@ package Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class  Sign {
+public class Sign {
     @SerializedName("name")
     private String name;
 
@@ -22,9 +22,13 @@ public class  Sign {
         return name;
     }
 
-
+    /**
+     * Name cannot be empty
+     *
+     * @param name name of sign
+     */
     public void setName(String name) {
-        if (name.length() > 0)
+        if (!name.isBlank())
             this.name = name;
         else
             throw new IllegalArgumentException("Name must be longer than 0");
@@ -34,11 +38,24 @@ public class  Sign {
         return startDate;
     }
 
+    /**
+     * Date should be in DD/MM form where it can be formatted
+     * or a copy of a previously formatted date
+     *
+     * @param startDate DD/MM date
+     */
     public void setStartDate(String startDate) {
-        String[] date = startDate.split("/");
-        this.startDate = formatDate(date);
-        }
-
+        if (!startDate.isBlank()) {
+            if (startDate.contains("/")) {
+                // Split using /
+                String[] date = startDate.split("/");
+                // this method decides whether to format or not
+                this.startDate = formatDate(date);
+            } else
+                this.startDate = startDate;
+        } else
+            throw new IllegalArgumentException("Must include start date");
+    }
 
 
     public String getEndDate() {
@@ -46,9 +63,18 @@ public class  Sign {
     }
 
     public void setEndDate(String endDate) {
-        String[] date = endDate.split("/");
-        this.endDate = formatDate(date);
+        if (!endDate.isBlank()) {
+            if (endDate.contains("/")) {
+                // Split using /
+                String[] date = endDate.split("/");
+                // this method decides whether to format or not
+                this.endDate = formatDate(date);
+            } else
+                this.endDate = endDate;
+        } else
+            throw new IllegalArgumentException("Must include end date");
     }
+
 
     @Override
     public String toString() {
@@ -57,11 +83,13 @@ public class  Sign {
 
     /**
      * Format date as 3 letter month followed by day
+     *
      * @param date Split string array of date
      * @return formatted date
      */
     private String formatDate(String[] date) {
-        String month = "";
+
+        String month;
 
         // file has form 22/1 for day/month
         if (date[1].equalsIgnoreCase("1"))
@@ -91,5 +119,6 @@ public class  Sign {
 
         return String.format("%s %s", month, date[0]);
 
-}
+
+    }
 }

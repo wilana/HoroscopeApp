@@ -10,8 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BorderStroke;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +38,9 @@ public class SelectHoroscopeController implements Initializable {
     private ListView<Sign> signListView;
 
     @FXML
+    private  Button allSignsButton;
+
+    @FXML
     private Button getHoroscopeButton;
 
     /**
@@ -48,6 +49,8 @@ public class SelectHoroscopeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // make allSignsButton not visible
+        allSignsButton.setVisible(false);
 
         // formatting from https://howtodoinjava.com/java/date-time/localdate-format-example/
         String todayDate = today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
@@ -72,6 +75,15 @@ public class SelectHoroscopeController implements Initializable {
             e.printStackTrace();
         }
 
+        // if All Signs button is clicked, show all signs and hide button
+        allSignsButton.setOnAction(event ->
+        {
+            signListView.getItems().clear();
+            signListView.getItems().addAll(signs);
+            // hide button again
+            allSignsButton.setVisible(false);
+        });
+
         // Start datepicker at 20 years ago
         birthdayDatePicker.setValue(today.minusYears(20));
 
@@ -85,6 +97,9 @@ public class SelectHoroscopeController implements Initializable {
                 signListView.getItems().clear();
                 signListView.getItems().add(getSignInfo(sign));
 
+                // show button to see all
+                allSignsButton.setVisible(true);
+
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
@@ -96,13 +111,13 @@ public class SelectHoroscopeController implements Initializable {
             try {
                 String sign = signListView.getSelectionModel().getSelectedItem().getName();
                 if (!sign.equalsIgnoreCase("Invalid Date")) {
-                    String date = "";
+                    String date;
                     String selected = dayComboBox.getValue();
                     if (selected.equalsIgnoreCase(today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)))) {
                         date = "today";
                     } else if (selected.equalsIgnoreCase(yesterday.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)))) {
                         date = "yesterday";
-                    } else if (selected.equalsIgnoreCase(tomorrow.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)))) {
+                    } else {
                         date = "tomorrow";
                     }
 

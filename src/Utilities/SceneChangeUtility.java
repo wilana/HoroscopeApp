@@ -14,16 +14,17 @@ public class SceneChangeUtility {
 
     /**
      * Changes to the view and sets the title
-     * @param event click of button
+     *
+     * @param event    click of button
      * @param viewName file path
-     * @param title title of scene
-     * @throws IOException
+     * @param title    title of scene
      */
     public static void changeScene(ActionEvent event, String viewName, String title) throws IOException {
 
         // Load file with scene
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(new Object(){}.getClass().getResource(viewName));
+        loader.setLocation(new Object() {
+        }.getClass().getResource(viewName));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         scene.getStylesheets().add("styles.css");

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="500.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewHoroscopeController">
+<AnchorPane maxHeight="650.0" maxWidth="500.0" minHeight="650.0" minWidth="500.0" prefHeight="650.0" prefWidth="500.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewHoroscopeController">
    <children>
-      <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="600.0" spacing="20.0">
+      <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="2.0" layoutY="2.0" maxHeight="550.0" minHeight="550.0" prefHeight="550.0" prefWidth="498.0" spacing="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
             <Label id="mainLabel" text="Horoscope" underline="true">
                <font>
@@ -23,8 +23,8 @@
             <Label fx:id="currentDayLabel" text="For date" />
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" minHeight="75.0" minWidth="200.0" prefWidth="200.0" text="Description:" textAlignment="RIGHT" />
-                  <Label fx:id="descriptionLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" minHeight="75.0" minWidth="200.0" prefHeight="75.0" prefWidth="200.0" text="advice" wrapText="true">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" minHeight="100.0" minWidth="150.0" prefWidth="150.0" styleClass="horoscopeLabel" text="Description:" textAlignment="RIGHT" />
+                  <Label fx:id="descriptionLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" minHeight="100.0" minWidth="200.0" prefHeight="100.0" prefWidth="225.0" text="advice" wrapText="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -39,8 +39,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Compatibility:" textAlignment="RIGHT" />
-                  <Label fx:id="compatibilityLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="sign">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" styleClass="horoscopeLabel" text="Compatibility:" textAlignment="RIGHT" />
+                  <Label fx:id="compatibilityLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="225.0" text="sign">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -55,8 +55,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Mood:" textAlignment="RIGHT" />
-                  <Label fx:id="moodLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="mood">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" styleClass="horoscopeLabel" text="Mood:" textAlignment="RIGHT" />
+                  <Label fx:id="moodLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="225.0" text="mood">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -71,8 +71,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Colour:" textAlignment="RIGHT" />
-                  <Label fx:id="colourLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="sign">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" styleClass="horoscopeLabel" text="Colour:" textAlignment="RIGHT" />
+                  <Label fx:id="colourLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="225.0" text="sign">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -87,8 +87,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Lucky Number:" textAlignment="RIGHT" />
-                  <Label fx:id="luckyNumLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="number">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" styleClass="horoscopeLabel" text="Lucky Number:" textAlignment="RIGHT" />
+                  <Label fx:id="luckyNumLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="225.0" text="number">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -103,8 +103,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="24.0" prefWidth="498.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="200.0" text="Lucky Time:" textAlignment="RIGHT" />
-                  <Label fx:id="luckyTimeLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="200.0" text="Time">
+                  <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" styleClass="horoscopeLabel" text="Lucky Time:" textAlignment="RIGHT" />
+                  <Label fx:id="luckyTimeLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" prefWidth="225.0" text="Time">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -122,6 +122,6 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Button fx:id="goBackButton" alignment="BOTTOM_CENTER" layoutX="235.0" layoutY="600.0" mnemonicParsing="false" text="Go Back" />
+      <Button fx:id="goBackButton" alignment="BOTTOM_CENTER" layoutX="150.0" layoutY="589.0" mnemonicParsing="false" prefWidth="200.0" styleClass="roundedButton" text="Go Back" />
    </children>
 </AnchorPane>

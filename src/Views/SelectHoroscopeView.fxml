@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="500.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SelectHoroscopeController">
+<AnchorPane maxWidth="0.0" minHeight="650.0" minWidth="500.0" prefHeight="650.0" prefWidth="500.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SelectHoroscopeController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="500.0">
          <children>
@@ -50,6 +50,9 @@
                   </Label>
                   <DatePicker fx:id="birthdayDatePicker" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
             <HBox alignment="TOP_CENTER">
                <children>
@@ -60,8 +63,9 @@
                   </ListView>
                </children>
             </HBox>
+            <Button fx:id="allSignsButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" styleClass="roundedButton" text="See All Signs" />
          </children>
       </VBox>
-      <Button fx:id="getHoroscopeButton" layoutX="194.0" layoutY="600.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="112.0" text="Get Horoscope" />
+      <Button fx:id="getHoroscopeButton" layoutX="151.0" layoutY="600.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" styleClass="roundedButton" text="Get Horoscope" />
    </children>
 </AnchorPane>

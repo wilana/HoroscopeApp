@@ -3,7 +3,6 @@
     -fx-font-family: "Futura";
     -fx-text-fill: #DCE0D9;
     -fx-border-color: #808F85;
-
 }
 
 .label {
@@ -14,7 +13,26 @@
     -fx-font-size: 24px;
 }
 
+.horoscopeLabel {
+    -fx-text-fill: #808F85;
+}
+
+.roundedButton {
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+}
+
 .date-picker-popup > .month-year-pane
 {
+    /* make month and date dark background, text is inherited light */
     -fx-background-color: #31081F;
 }
+
+.list-view {
+    /* remove border */
+    -fx-padding: 0px;
+}
+
+
+

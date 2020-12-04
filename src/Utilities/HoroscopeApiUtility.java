@@ -10,8 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class HoroscopeApiUtility {
-    private static String rapidApiKeyName = "x-rapidapi-key";
-    private static String rapidApiKeyValue = "c0a77e70f0mshd6add42bee1793bp15d37ejsn0b7319d01ef5";
+    private static final String rapidApiKeyName = "x-rapidapi-key";
+    private static final String rapidApiKeyValue = "c0a77e70f0mshd6add42bee1793bp15d37ejsn0b7319d01ef5";
 
 
     /**
